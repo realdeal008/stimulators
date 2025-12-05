@@ -35,7 +35,7 @@ const Products: React.FC = () => {
   const { addToCart } = useCart();
 
   return (
-    <section className="products-section">
+    <section id="products" className="products-section">
       <div className="products-container">
         <motion.h2
           className="products-title"

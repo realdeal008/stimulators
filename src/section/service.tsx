@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, easeOut } from "framer-motion";
+import { useCart } from "../component/useCart";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -23,6 +24,8 @@ const cardVariant = {
 };
 
 const Services: React.FC = () => {
+  const { addToCart } = useCart();
+  
   const serviceData = [
     {
       icon: (
@@ -122,8 +125,12 @@ const Services: React.FC = () => {
                 <span className="custom-text">${service.price}+</span>
                 <button
                   className="add-to-cart"
-                  data-name={service.title}
-                  data-price={service.price}
+                  onClick={() => addToCart({
+                    name: service.title,
+                    price: parseFloat(service.price),
+                    description: service.desc,
+                    image: "https://via.placeholder.com/150",
+                  })}
                 >
                   Add to Cart
                 </button>

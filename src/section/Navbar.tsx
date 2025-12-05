@@ -124,6 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleCart, cartCount }) => {
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
+              {cartCount > 0 && <span className="notification-badge">{cartCount}</span>}
             </button>
           </div>
         </div>
@@ -202,6 +203,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleCart, cartCount }) => {
                         d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                       />
                     </svg>
+                    <span className="notification-badge">{cartCount}</span>
                     Cart
                   </motion.button>
                 </nav>
