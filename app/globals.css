@@ -373,14 +373,19 @@ body {
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  background: linear-gradient(
-  90deg,
-  #f0c505 ,
-  rgb(219, 139, 139) ,
-  #C0C0C0 
-);
--webkit-background-clip: text;
-color: transparent;
+  color: #f59a55;
+  text-shadow:
+  2px 2px 0 #ff4d4d,   /* bright metallic red edge */
+  4px 4px 0 #e63737,   /* rich chrome red */
+  6px 6px 0 #cc2b2b,   /* deeper metallic red */
+  8px 8px 0 #b22222,   /* darkened metal red (no black) */
+  10px 10px 0 #9e1b1b; 
+  font-style: oblique;
+
+
+
+
+
 
 }
 
@@ -398,7 +403,7 @@ color: transparent;
     0 0 3px rgba(255, 253, 253, 0.4),
     -1px -1px 1px rgba(0, 0, 0, 0.7),
     1px 1px 0 rgba(207, 206, 206, 0.6);
-
+ 
   letter-spacing: 0.5px;
 }
 
