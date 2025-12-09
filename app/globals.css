@@ -366,46 +366,52 @@ body {
   align-items: flex-start;
   justify-content: center;
   padding: 2rem;
-  color: white;
-}
 
+}
 .hero-text h1 {
   font-size: 3.5rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: #f59a55;
+
+  /* Metallic silver-grey (UNCHANGED) */
+  color: #d6d6d6;
+
+  /* Sharp 3D silver + yellow reflection */
   text-shadow:
-  2px 2px 0 #ff4d4d,   /* bright metallic red edge */
-  4px 4px 0 #e63737,   /* rich chrome red */
-  6px 6px 0 #cc2b2b,   /* deeper metallic red */
-  8px 8px 0 #b22222,   /* darkened metal red (no black) */
-  10px 10px 0 #9e1b1b; 
-  font-style: oblique;
+    2px 2px 0 #c4c4c4,   /* silver top layer */
+    4px 4px 0 #b3b3b3,   /* silver depth */
+    6px 6px 0 #a6a6a6,   /* mid silver */
+    8px 8px 0 #d9b84a,   /* soft metallic yellow reflection */
+    10px 10px 0 #caa834; /* deeper warm yellow base */
 
-
-
-
-
-
+  font-style: normal;
+  font-family: 'Cinzel', 'Montserrat', serif;
 }
+
 
 .penned {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
-  font-size: 2.15rem;
+  font-size: 2rem; /* unchanged */
   font-style: italic;
-  color: #000000;
 
-  -webkit-text-stroke: 0.5px #131212;
+  /* Metallic silver-grey */
+  color: #000000ff;
 
+  /* Clean silver stroke (no black) */
+  -webkit-text-stroke: 0.4px #bdbdbd;
+
+  /* Sharp 3D extrusion (NO blur, NO glow) */
   text-shadow:
-    0 0 1px #f3f0f0,
-    0 0 3px rgba(255, 253, 253, 0.4),
-    -1px -1px 1px rgba(0, 0, 0, 0.7),
-    1px 1px 0 rgba(207, 206, 206, 0.6);
- 
+    1px 1px 0 #cfcfcf,
+    2px 2px 0 #bcbcbc,
+    3px 3px 0 #a8a8a8,
+    4px 4px 0 #949494,
+    5px 5px 0 #808080;
+
   letter-spacing: 0.5px;
 }
+
 
 .celeb {
   font-weight: bolder;
