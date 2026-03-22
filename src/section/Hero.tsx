@@ -48,7 +48,7 @@ const Hero = () => {
               <span className="penned text-3d-soft">STIMULATORS</span>
               
             </div>
-            that nourish your hair and skin
+            That Nourish Your Hair & Skin
            
           </motion.h1>
 
