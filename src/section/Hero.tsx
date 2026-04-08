@@ -1,25 +1,31 @@
-
-
 "use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// Your image path - replace with actual path
 const Man = "/image/mane.jpg";
 
 const Hero = () => {
   return (
     <section id="home" className="hero-container">
-      {/* METALLIC BACKGROUND WITH TEXTURE */}
-      <div className="hero-bg" />
+      {/* METALLIC SILVER BASE */}
+      <div className="hero-metallic" />
+      
+      {/* HOT RED OVERLAY WITH PULSE */}
+      <div className="hero-hot-overlay" />
+      
+      {/* LOGO WATERMARK BACKGROUND */}
+      <div className="hero-watermark">
+        <span className="watermark-text">MANEGASM</span>
+        <span className="watermark-sub">STIMULATORS</span>
+      </div>
 
       <div className="hero-content">
-        {/* IMAGE - LEFT SIDE */}
+        {/* IMAGE LEFT */}
         <motion.div 
           className="hero-image"
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -80, scale: 0.9 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <Image
@@ -32,24 +38,24 @@ const Hero = () => {
           />
         </motion.div>
 
-        {/* TEXT - RIGHT SIDE */}
+        {/* TEXT RIGHT */}
         <motion.div 
           className="hero-text"
-          initial={{ opacity: 0, x: 60 }}
+          initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
         >
-          {/* LOGO: RED TO GOLD */}
+          {/* RED HOT LOGO */}
           <motion.h1 
             className="logo"
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
             MANEGASM
           </motion.h1>
 
-          {/* SUBTITLE: BLACK */}
+          {/* STIMULATORS */}
           <motion.p 
             className="penned"
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +65,7 @@ const Hero = () => {
             STIMULATORS
           </motion.p>
 
-          {/* TAGLINE: ITALIC BLACK */}
+          {/* TAGLINE */}
           <motion.div 
             className="tagline"
             initial={{ opacity: 0, y: 20 }}
@@ -70,7 +76,7 @@ const Hero = () => {
             <span className="tagline-line2">Your Hair & Skin</span>
           </motion.div>
 
-          {/* DESCRIPTION WITH ACCENTS */}
+          {/* DESCRIPTION */}
           <motion.p 
             className="description"
             initial={{ opacity: 0, y: 20 }}
@@ -86,18 +92,31 @@ const Hero = () => {
             both <span className="accent-red">silky, soft</span>, and nourished.
           </motion.p>
 
-          {/* CTA BUTTON */}
-          <motion.a 
-            href="#booking"
-            className="btn-primary"
+          {/* RED HOT BUTTONS */}
+          <motion.div 
+            className="hero-buttons"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
           >
-            Book Appointment
-          </motion.a>
+            <motion.a 
+              href="#booking"
+              className="btn btn-primary"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Book Appointment
+            </motion.a>
+
+            <motion.a 
+              href="#services"
+              className="btn btn-secondary"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Our Services
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
