@@ -251,58 +251,134 @@ body {
    =========================== */
 
 /* Strong gold 3D for main h1 */
-.text-3d {
+.text-3d-gold {
   text-shadow:
-    0px 1px 0px #000,
-    0px 2px 0px #000,
-    0px 3px 0px #000,
-    0px 4px 0px rgba(0,0,0,0.8),
-    0px 6px 8px rgba(0,0,0,0.6),
-    0px 8px 20px rgba(0,0,0,0.4);
+    1px 1px 0px rgba(0,0,0,0.7),
+    2px 2px 0px rgba(201,168,124,0.5),
+    3px 3px 0px rgba(201,168,124,0.3),
+    4px 4px 0px rgba(201,168,124,0.2);
 }
 
 /* Softer engraved 3D for subtexts */
 .text-3d-soft {
   text-shadow:
-    0px 1px 0px #111,
-    0px 2px 2px rgba(0,0,0,0.4),
-    0px 4px 6px rgba(0,0,0,0.3);
+    1px 1px 0px rgba(0,0,0,0.6),
+    2px 2px 0px rgba(0,0,0,0.4),
+    3px 3px 0px rgba(0,0,0,0.2);
 }
 
 /* Metallic 3D logo */
-.text-3d-metal {
+.logo-3d {
+  background: linear-gradient(135deg, #c9a87c, #d4af37, #f4e8d0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   text-shadow:
-    0px 1px 0px #222,
-    0px 2px 0px #222,
-    0px 3px 0px rgba(0,0,0,0.7),
-    0px 5px 8px rgba(0,0,0,0.5),
-    0px 8px 20px rgba(0,0,0,0.4);
+    0px 2px 4px rgba(0,0,0,0.5),
+    0px 6px 20px rgba(201,168,124,0.4),
+    0px 10px 40px rgba(201,168,124,0.3);
 }
+/* ========================================
+   MANEGASM CELEBRITY STYLIST 3D SYSTEM
+   Palette: Cream → Champagne → Crimson → Emerald
+   Vibe: Mediterranean Luxury, Hair Shine, Celebrity Prestige
+   ======================================== */
+
+/* ===== CSS VARIABLES - CELEBRITY COLOR SYSTEM ===== */
+:root {
+  /* Background Flow: Skin → Champagne → Passion → Nature */
+  --bg-cream: #f5f0eb;         /* Warm cream - approachable */
+  --bg-champagne: #e6d5c3;      /* Soft champagne - luxury */
+  --bg-gold: #c9a87c;           /* Rich gold - metallic shine */
+  --bg-crimson: #b83b5e;        /* Living coral/crimson - energy */
+  --bg-crimson-deep: #8b1c2a;   /* Deep crimson - depth */
+  --bg-emerald: #0d4a3a;        /* Deep emerald - natural roots */
+
+  /* Text Metallic System */
+  --text-champagne: #f4e8d0;    /* Primary - champagne metallic */
+  --text-gold: #d4af37;         /* Accent - pure gold */
+  --text-rose-gold: #c9a87c;    /* Bridge - warm metallic */
+  --text-crimson-light: #d4637a; /* Highlight - soft crimson */
+
+  /* 3D Shadow System */
+  --shadow-gold: rgba(201, 168, 124, 0.4);
+  --shadow-crimson: rgba(184, 59, 94, 0.5);
+  --shadow-emerald: rgba(13, 74, 58, 0.3);
+  --shadow-dark: rgba(31, 20, 20, 0.6);
+  --shadow-highlight: rgba(244, 232, 208, 0.95);
+
+  /* Depth System */
+  --3d-perspective: 1200px;
+  --depth-bg: 0px;
+  --depth-image: 40px;
+  --depth-text: 60px;
+  --depth-cta: 80px;
+}
+
+/* ===== HERO CONTAINER ===== */
 .hero-container {
   position: relative;
   height: 100vh;
-  width: 98.9vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  perspective: var(--3d-perspective);
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ===== CELEBRITY BACKGROUND: Cream → Champagne → Crimson → Emerald ===== */
 .hero-bg {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    120deg,
-    #c0c0c0 0%,
-    #b3b3b3 20%,
-    #2e2e2e 60%,
-    #c72c41 100%
+    135deg,
+    var(--bg-cream) 0%,
+    var(--bg-champagne) 15%,
+    var(--bg-gold) 35%,
+    var(--bg-crimson) 65%,
+    var(--bg-crimson-deep) 85%,
+    var(--bg-emerald) 100%
   );
-  opacity: 0.85;
+  opacity: 0.92;
   z-index: 1;
+  pointer-events: none;
+
+  /* Luxury glassmorphism with warm tint */
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+/* Hair-strand noise texture */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+/* Soft vignette for celebrity spotlight effect */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    transparent 0%,
+    transparent 40%,
+    rgba(13, 74, 58, 0.2) 100%
+  );
   pointer-events: none;
 }
 
+/* ===== CONTENT CONTAINER ===== */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -312,37 +388,12 @@ body {
   height: 100%;
   align-items: center;
   padding: 0 2rem;
+  transform-style: preserve-3d;
+  container-type: inline-size;
+  container-name: hero;
 }
 
-@media (max-width: 768px) {
-  .sec {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-
-  .hero-content {
-    flex-direction: column;
-    padding: 0 1rem;
-  }
-
-  .hero-image {
-    flex: 1;
-    width: 100%;
-    text-align: center;
-  }
-
-  .celeb {
-    font-size: 1.125rem;
-  }
-
-  .hero-text {
-    width: 100%;
-    text-align: center;
-  }
-}
-
+/* ===== IMAGE SECTION - HAIR SHINE DEPTH ===== */
 .hero-image {
   flex: 1;
   height: 100%;
@@ -350,15 +401,39 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateZ(var(--depth-image));
+  will-change: transform, opacity;
+  position: relative;
+}
+
+/* Hair shine overlay on image */
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(201, 168, 124, 0.1) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
 }
 
 .image-cover {
-  width: 100vw;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: white;
+  background-color: var(--bg-cream);
+  box-shadow: 
+    0 30px 60px -15px rgba(13, 74, 58, 0.3),
+    0 0 0 1px rgba(244, 232, 208, 0.2);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: sepia(5%) saturate(95%) brightness(102%) contrast(98%);
 }
 
+/* ===== TEXT SECTION - CHAMPAGNE METALLIC ===== */
 .hero-text {
   flex: 1;
   display: flex;
@@ -366,157 +441,412 @@ body {
   align-items: flex-start;
   justify-content: center;
   padding: 2rem;
-
+  transform: translateZ(var(--depth-text));
+  will-change: transform, opacity;
 }
+
+/* ===== MAIN HEADLINE - CHAMPAGNE GOLD 3D ===== */
 .hero-text h1 {
-  font-size: 3.5rem;
+  font-size: 3.6rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-
-  /* Metallic silver-grey (UNCHANGED) */
-  color: rgb(56, 56, 56);
-  /* Sharp 3D silver + yellow reflection */
-  text-shadow:
-    1px 1px 0 rgb(7, 7, 7),
-    2px 2px 0 rgb(14, 13, 13),
-    3px 3px 0 rgb(7, 7, 7),
-    4px 4px 0 rgba(201, 30, 30, 1),
-    5px 5px 0 rgb(185, 6, 6); /* deeper warm yellow base */
-
-  font-style: italic;
-   font-family: "Roboto Slab", serif;
-  letter-spacing: 0.5px;
-
-}
-
-
-.penned {
+  margin-bottom: 1.2rem;
   font-family: "Roboto Slab", serif;
-  font-weight: 600;
-  font-size: 1.6rem; /* unchanged */
   font-style: italic;
-
-  color: #000000ff;
-
-  -webkit-text-stroke: 0.4px #bdbdbd;
-
-  /* Original 3D layers (UNCHANGED) */
-  text-shadow:
-    1px 1px 0 rgb(0, 0, 0),
-    2px 2px 0 rgb(0, 0, 0),
-    3px 3px 0 rgb(0, 0, 0),
-    4px 4px 0 rgb(5, 5, 5),
-    5px 5px 0 rgb(0, 0, 0),
-
-    /* ✨ Added shine layers */
-    -1px -1px 1px rgba(255, 255, 255, 0.7),
-    0px -2px 1px rgba(255, 255, 255, 0.5),
-    1px 0px 1px rgba(255, 255, 255, 0.4);
-
   letter-spacing: 0.5px;
-}
+  line-height: 1.15;
+  color: var(--text-champagne);
 
-
-
-.celeb {
-  font-weight: bolder;
-  font-size: 1.25rem;
-  color: #e0dbdb;
-
+  /* 3D Shadow: Gold depth + Crimson glow + Emerald root */
   text-shadow:
-    0 0 1px #a9a9a9,
-    0 0 3px rgba(211, 211, 211, 0.4),
-    -1px -1px 1px rgba(0, 0, 0, 0.6),
-    1px 1px 0 rgba(85, 84, 84, 0.5);
+    1px 1px 0 var(--shadow-dark),
+    2px 2px 0 rgba(139, 28, 42, 0.4),
+    3px 3px 0 var(--shadow-gold),
+    4px 4px 0 var(--shadow-crimson),
+    0 12px 30px rgba(13, 74, 58, 0.25),
+    -1px -1px 1px var(--shadow-highlight);
 
-  margin-bottom: 1rem;
-  max-width: 600px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
+/* ===== LOGO - HAIR SHINE METALLIC GRADIENT ===== */
 .logo {
-  font-size: 3.2rem;
+  font-size: 3.6rem;
   font-weight: 700;
   font-family: 'Cinzel', serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 0.3rem;
+  line-height: 1;
 
+  /* Hair-shine metallic: Champagne → Gold → Rose Gold → Crimson */
   background: linear-gradient(
-    to bottom right,
-    #c0c0c0,
-    #f30606,
-    #006400
+    135deg,
+    var(--text-champagne) 0%,
+    var(--text-gold) 25%,
+    var(--text-rose-gold) 50%,
+    var(--text-crimson-light) 75%,
+    var(--bg-crimson) 100%
   );
+  background-size: 200% 200%;
+  background-position: 0% 50%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 
-  text-shadow: 
-    0 1px 1px rgba(0, 0, 0, 0.2),
-    0 2px 6px rgba(0, 0, 0, 0.3);
+  /* 3D drop shadow for depth */
+  filter: 
+    drop-shadow(0 2px 4px rgba(31, 20, 20, 0.4))
+    drop-shadow(0 4px 8px rgba(184, 59, 94, 0.2))
+    drop-shadow(0 8px 16px rgba(13, 74, 58, 0.15));
+
+  /* Subtle shimmer animation */
+  animation: hairShine 8s ease-in-out infinite;
+  transform: translateZ(40px);
 }
 
+@keyframes hairShine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ===== PENNED - ROSE GOLD ELEGANCE ===== */
+.penned {
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
+  font-size: 1.7rem;
+  font-style: italic;
+  letter-spacing: 0.8px;
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--text-rose-gold);
+
+  /* 3D with emerald root hint */
+  text-shadow:
+    1px 1px 0 rgba(31, 20, 20, 0.6),
+    2px 2px 0 rgba(139, 28, 42, 0.3),
+    3px 3px 0 var(--shadow-emerald),
+    -1px -1px 1px rgba(244, 232, 208, 0.6),
+    0 6px 15px rgba(13, 74, 58, 0.2);
+
+  transform: translateZ(25px);
+}
+
+/* ===== CELEB - CHAMPAGNE SOFT ===== */
+.celeb {
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--text-champagne);
+  margin-bottom: 2.2rem;
+  max-width: 550px;
+  line-height: 1.8;
+  opacity: 0.95;
+
+  text-shadow:
+    0 1px 2px rgba(31, 20, 20, 0.4),
+    0 2px 4px rgba(13, 74, 58, 0.15);
+
+  transform: translateZ(15px);
+}
+
+/* Plant emoji - emerald tinted */
+.celeb .plant-icon {
+  display: inline-block;
+  margin-left: 0.4rem;
+  filter: sepia(40%) hue-rotate(120deg) saturate(60%) brightness(1.1);
+  opacity: 0.9;
+}
+
+/* ===== BUTTONS - CRIMSON ENERGY ===== */
 .hero-buttons {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  transform: translateZ(var(--depth-cta));
+  transform-style: preserve-3d;
+}
+
+.btn {
+  padding: 1.15rem 2.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  box-shadow: 
+    0 4px 6px rgba(31, 20, 20, 0.1),
+    0 10px 20px rgba(31, 20, 20, 0.15),
+    0 1px 0 rgba(244, 232, 208, 0.15) inset;
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.6rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(244, 232, 208, 0.2),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+/* Primary: Crimson - Book Appointment */
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--bg-crimson) 0%,
+    var(--bg-crimson-deep) 100%
+  );
+  color: var(--text-champagne);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    var(--text-crimson-light) 0%,
+    var(--bg-crimson) 100%
+  );
+  transform: translateZ(15px) scale(1.03);
+  box-shadow: 
+    0 8px 25px var(--shadow-crimson),
+    0 15px 35px rgba(184, 59, 94, 0.25),
+    0 1px 0 rgba(244, 232, 208, 0.2) inset;
+}
+
+.btn-primary:active {
+  transform: translateZ(5px) scale(0.98);
+}
+
+/* Secondary: Champagne Gold - Our Services */
+.btn-secondary {
+  background: rgba(201, 168, 124, 0.12);
+  border: 2px solid var(--text-gold);
+  color: var(--text-champagne);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-secondary:hover {
+  background: rgba(201, 168, 124, 0.28);
+  border-color: var(--text-champagne);
+  transform: translateZ(15px) scale(1.03);
+  box-shadow: 
+    0 8px 25px var(--shadow-gold),
+    0 15px 35px rgba(201, 168, 124, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateZ(5px) scale(0.98);
+}
+
+/* ===== RESPONSIVE ===== */
+@container hero (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    padding: 0 1.5rem;
+    justify-content: center;
+  }
+
+  .hero-image {
+    flex: none;
+    width: 100%;
+    height: 45vh;
+    transform: translateZ(20px);
+    order: 2;
+  }
+
+  .hero-text {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 1.5rem;
+    transform: translateZ(35px);
+    order: 1;
+  }
+
+  .hero-text h1 {
+    font-size: 2.6rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .logo {
+    font-size: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .penned {
+    font-size: 1.4rem;
+  }
+
+  .celeb {
+    font-size: 1.05rem;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    align-items: center;
+    transform: translateZ(45px);
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
 }
 
 @media (min-width: 640px) {
   .hero-buttons {
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 1.2rem;
   }
-}
-
-.btn {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.btn-primary {
-  background-color: #b30000;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #8b0000;
-  transform: scale(1.05);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  border: 2px solid #c0c0c0;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #c0c0c0;
-  color: white;
-  transform: scale(1.05);
 }
 
 @media (min-width: 768px) {
   .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 3.6rem;
     text-align: left;
+  }
+
+  .hero-text {
+    align-items: flex-start;
   }
 }
 
-@media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 2.25rem;
-    text-align: left;
+@media (min-resolution: 2dppx) {
+  .hero-text h1,
+  .penned,
+  .logo {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-container,
+  .hero-image,
+  .hero-text,
+  .btn,
+  .logo {
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
   }
 
-  .hero-text p {
-    font-size: 1rem;
-    text-align: left;
+  .hero-bg::before,
+  .hero-bg::after {
+    display: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .hero-text h1,
+  .penned,
+  .celeb {
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #000000;
+  }
+
+  .logo {
+    background: white;
+    -webkit-text-fill-color: white;
+    filter: drop-shadow(2px 2px 0 black);
+  }
+
+  .btn-primary {
+    border: 3px solid #ffffff;
+  }
+
+  .btn-secondary {
+    border: 3px solid #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ===== DARK MODE ADAPTATION ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-cream: #e6ddd4;
+    --text-champagne: #f5f0eb;
+  }
+
+  .hero-bg {
+    opacity: 0.88;
+  }
+
+  .hero-text h1 {
+    text-shadow:
+      1px 1px 0 rgba(0, 0, 0, 0.7),
+      2px 2px 0 rgba(139, 28, 42, 0.5),
+      3px 3px 0 rgba(201, 168, 124, 0.4),
+      4px 4px 0 rgba(184, 59, 94, 0.4),
+      0 12px 30px rgba(0, 0, 0, 0.4),
+      -1px -1px 1px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .hero-container {
+    height: auto;
+    background: white !important;
+  }
+
+  .hero-bg {
+    display: none;
+  }
+
+  .hero-text h1,
+  .penned,
+  .celeb {
+    color: black !important;
+    text-shadow: none !important;
+  }
+
+  .logo {
+    background: black !important;
+    -webkit-text-fill-color: black !important;
+    filter: none !important;
+  }
+
+  .btn {
+    border: 2px solid black !important;
+    background: white !important;
+    color: black !important;
   }
 }
 
