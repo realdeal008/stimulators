@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const Man = "/image/mane.jpg";
+const Man = "/image/mane.jpeg";
 
 const Hero = () => {
   return (

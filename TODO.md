@@ -1,17 +1,12 @@
-# Deploy Plan Progress
+# Commit Changes to Deployment - Progress
 
 ## Current Status
-- [x] Analyzed changes (globals.css + Hero.tsx)
+- [x] Analyzed git status: modified Hero.tsx, untracked mane.jpeg
 - [x] User confirmed plan
 
 ## Steps to Complete
-- [x] Stage modified files (globals.css, Hero.tsx)
-- [x] Commit changes (fa527dd)
-- [x] Push to main 
-- [ ] Deploy to Vercel (needs `vercel login` first)
-- [ ] Verify live site
+- [x] Stage changes: git add src/section/Hero.tsx public/image/mane.jpeg
+- [▶] Commit changes (running: save & close .git/COMMIT_EDITMSG tab in VSCode)
+- [ ] Push to origin/main (triggers Vercel deploy)
 
-**Completed:** Changes committed/pushed to https://github.com/realdeal008/stimulators (main@fa527dd)
-**Next:** Run `vercel login` then `vercel --prod`
-
-**Next step:** `git add app/globals.css src/section/Hero.tsx`
+**Note:** Prior commits (e.g., fa527dd) already done; this handles remaining changes.
