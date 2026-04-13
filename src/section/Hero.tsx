@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const Man = "/image/mane.jpeg";
+const StylistImage = "/image/mane.jpg";
 
 const Hero = () => {
   return (
@@ -29,7 +29,7 @@ const Hero = () => {
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <Image
-            src={Man}
+            src={StylistImage}
             alt="Celebrity hairstylist working on client"
             className="image-cover"
             width={600}
